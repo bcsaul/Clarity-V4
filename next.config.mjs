@@ -27,6 +27,9 @@ const nextConfig = {
     optimizeCss: true,
     scrollRestoration: true,
     serverActions: true,
+    turbo: true,
+    optimizePackageImports: ['framer-motion', 'lucide-react', '@radix-ui/react-icons'],
+    useLightningcss: true,
   },
   swcMinify: true,
   reactStrictMode: true,
@@ -34,6 +37,42 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   productionBrowserSourceMaps: false,
+  webpack: (config, { dev, isServer }) => {
+    if (!dev) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        maxInitialRequests: 25,
+        minSize: 20000,
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          framework: {
+            name: 'framework',
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|next)[\\/]/,
+            priority: 40,
+            enforce: true,
+          },
+          lib: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: 30,
+            minChunks: 2,
+            name(module) {
+              const match = module.context.match(/[\\/]node_modules[\\/](.*?)[\\/]/);
+              if (!match) return 'lib';
+              const packageName = match[1];
+              return `lib.${packageName.replace('@', '')}`;
+            },
+          },
+          commons: {
+            name: 'commons',
+            minChunks: 3,
+            priority: 20,
+          },
+        },
+      };
+    }
+    return config;
+  },
 }
 
 mergeConfig(nextConfig, userConfig)
