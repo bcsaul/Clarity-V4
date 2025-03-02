@@ -1,0 +1,28 @@
+clarity-news/
+├── app/
+│   ├── (auth)/
+│   │   ├── login/
+│   │   │   └── page.tsx        # Login page
+│   │   └── signup/
+│   │       └── page.tsx        # Signup page
+│   ├── story/
+│   │   └── [id]/
+│   │       └── page.tsx        # Individual story view
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Home page
+├── components/
+│   ├── features/
+│   │   ├── games/
+│   │   │   ├── connections.tsx # Connections game
+│   │   │   └── wordle.tsx      # Wordle game
+│   │   └── story/
+│   │       ├── perspectives.tsx # Story perspectives
+│   │       └── reactions.tsx    # Story reactions
+│   └── ui/                     # Shared UI components
+├── lib/
+│   ├── types.ts                # Type definitions
+│   ├── constants.ts            # App constants
+│   └── utils.ts                # Utility functions
+└── styles/
+    └── globals.css             # Global styles
+
