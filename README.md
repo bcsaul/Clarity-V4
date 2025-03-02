@@ -26,12 +26,18 @@ ClarityNews is a modern news platform designed to provide readers with balanced,
 
 ### Installation
 
-1. Install dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/bcsaul/Clarity-V4.git
+   cd Clarity-V4
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. The app requires specific packages to work correctly. Make sure you have these installed:
+3. The app requires specific packages to work correctly. Make sure you have these installed:
    ```bash
    # UI and animation libraries
    npm install framer-motion next-themes 
@@ -167,6 +173,53 @@ If you want to use Supabase authentication:
    ```bash
    npm install critters
    ```
+
+## 📢 GitHub Repository Management
+
+### Version Management
+
+This repository uses a version-based approach for updates:
+
+1. **Main Branch**: The `main` branch always contains the latest stable version
+2. **Complete Versions**: Each version is a complete, working snapshot of the application
+3. **No Incremental Updates**: We do not commit small, incremental changes but rather complete, functional versions
+
+### Creating a New Version
+
+When you want to create a new version:
+
+1. Make all your changes locally and ensure they work correctly
+2. Test thoroughly to make sure the app functions as expected
+3. Commit and push as a complete new version:
+
+```bash
+# Add all changes
+git add .
+
+# Commit with a version message
+git commit -m "Version X: Brief description of major changes"
+
+# Push to GitHub
+git push
+```
+
+### Repository Setup
+
+If you need to set up this repository on a new machine:
+
+```bash
+# Clone the repository
+git clone https://github.com/bcsaul/Clarity-V4.git
+
+# Enter the project directory
+cd Clarity-V4
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
 
 ## 🏗️ Project Structure
 
